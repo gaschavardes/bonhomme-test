@@ -1,15 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<Landing />
+	<Caroussel />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Landing from './components/Landing'
+import Caroussel from './components/Caroussel'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+	Landing,
+	Caroussel
   }
 }
 </script>
@@ -17,11 +18,8 @@ export default {
 <style lang="less">
 @import '@/assets/less/_imports.less';
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+	font-family: NewsCycle;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
