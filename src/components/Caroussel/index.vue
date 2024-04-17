@@ -13,7 +13,7 @@
 						<img :src="item.image" alt="">
 					</figure>
 					<div class="carrousel-content">
-						<p>{{ item.title }} <span>{{ item.year }}</span></p>
+						<p>{{ item.title }} <span>( {{ item.year }} )</span></p>
 					</div>
 				</li>
 			</ul>
@@ -54,7 +54,7 @@ export default {
 		items: [
 			{
 				image: image1,
-				title: 'film',
+				title: 'Parasite',
 				year: 2020,
 			},
 			{
@@ -138,13 +138,13 @@ export default {
 
 	initScrollTrigger() {
 		this.scrollTrigger = ScrollTrigger.create({
-					trigger: this.$el, 
-					start: "top bottom",
-					end: "bottom bottom",
-					onUpdate: () => {
-						this.dragUpdate()
-					}
-				})
+			trigger: this.$el, 
+			start: "top bottom",
+			end: "bottom top",
+			onUpdate: () => {
+				this.dragUpdate()
+			}
+		})
 	},
 
 	initDraggable() {
@@ -175,8 +175,9 @@ export default {
 		})
 	},
 	dragUpdate() {
+		const scrollProgress = this.scrollTrigger.progress || 0
 		this.$refs.item.forEach((element) => {
-			element.style.transform = `translate3D(${this.mod(element.transform + this.drag[0].x - this.scrollTrigger.progress * 1000,this.fullSize ) - this.itemSize.width * 2 }px, 0, 0)`
+			element.style.transform = `translate3D(${this.mod(element.transform + this.drag[0].x - scrollProgress * 1000,this.fullSize ) - this.itemSize.width * 2 }px, 0, 0)`
 		})
 	},
 

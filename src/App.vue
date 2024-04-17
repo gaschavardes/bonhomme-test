@@ -1,16 +1,19 @@
 <template>
 	<Landing />
 	<Caroussel />
+	<ScrolledElement/>
 </template>
 
 <script>
 import Landing from './components/Landing'
 import Caroussel from './components/Caroussel'
+import ScrolledElement from './components/ScrolledElement'
 export default {
   name: 'App',
   components: {
 	Landing,
-	Caroussel
+	Caroussel,
+	ScrolledElement
   }
 }
 </script>
