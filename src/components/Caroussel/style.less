@@ -1,0 +1,44 @@
+.caroussel-component{
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	background-color: @black;
+	padding-top: 100px;
+	position: relative;
+
+	
+	.container{
+		color: @white;
+		position: relative;
+
+		&-subtitle{
+			margin-top: 20px;
+			font-size: @font-subtitle;
+			color: @lightGrey;
+		}
+	}
+	.carrousel{
+		ul{
+			width: 100vw;
+			overflow: hidden;
+			li{
+				display: inline-block;
+				max-width: calc(100vw - 20px);
+				position: absolute;
+
+				figure{
+					width: 100%;
+					img{
+						max-width: 100%;
+					}
+				}
+
+				.carrousel-content{
+
+				}
+			}
+		}
+	}
+
+
+}

@@ -43,7 +43,6 @@
 					start: "top top",
 					end: "bottom top",
 					onUpdate: () => {
-						console.log(this.scrollTrigger.progress, `${this.scrollTrigger.progress} * 50`)
 						const val = this.scrollTrigger.progress * 100 + 'px'
 						this.$refs.figure.style.transform = `translate3D(0, ${val}, 0)`
 					}
