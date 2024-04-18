@@ -3,16 +3,19 @@
 	<div class="scrolledElement" :style="`height: ${items.length * 100}vh`">
 		<div class="stickyEl" ref="sticky">
 			<div class="backgrounds" v-for="(item, key) in items" :key="key" :class="item.color" ref="backgrounds"></div>
-			<div class="content container" v-for="(item, key) in items" :key="key" ref="content">
-					<h2 class="content-title">{{ item.title }}</h2> <span class="content-rate">{{ item.rate }}</span>
-					<p class="content-summary">{{ item.summary }}</p>
-					<p class="content-label">{{ item.label }}</p>
+			<div class="content-container">
+				<div class="content container" v-for="(item, key) in items" :key="key" ref="content">
+				<h2 class="content-title">{{ item.title }}</h2> <span class="content-rate">{{ item.rate }}</span>
+				<p class="content-summary">{{ item.summary }}</p>
+				<p class="content-label">{{ item.label }}</p>
+			</div>
+			</div>
+		
+			<div class="imageContainer" ref="imageContainer">
+				<div class="image" v-for="(item, key) in items" :key="key" ref="image" :style="`z-index: ${items.length - key}`">
+					<img :src="item.img" alt="">
 				</div>
-				<div class="imageContainer" ref="imageContainer">
-					<div class="image" v-for="(item, key) in items" :key="key" ref="image" :style="`z-index: ${items.length - key}`">
-						<img :src="item.img" alt="">
-					</div>
-				</div>
+			</div>
 				
 			<!-- <div class="container" v-for="(item, key) in items" :key="key" ref="item" :style="`z-index: ${items.length - key}`">
 				
@@ -82,8 +85,8 @@ export default {
 			end: "top top",
 			onUpdate: () => {
 				// const val = -100 + this.mainScrollTrigger.progress * 100 + 'px'
-				this.contentAnim.progress(this.mainScrollTrigger.progress * 2 - 1)
-				this.imageAnim.progress(this.mainScrollTrigger.progress * 2 - 1)
+				this.contentAnim.progress(this.mainScrollTrigger.progress * 2 - 0.9)
+				this.imageAnim.progress(this.mainScrollTrigger.progress * 2 - 0.9)
 			}
 		})
 	},
