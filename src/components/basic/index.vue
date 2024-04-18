@@ -13,15 +13,8 @@ export default {
     return {}
   },
   created () {
-    // this._props.content.content.forEach((el) => {
-    //   if (el.acf_fc_layout === 'text') {
-    //     this.stepNumb++
-    //     el.index = this.stepNumb
-    //   }
-    // })
   },
   mounted () {
-    this.stepNumb = 0
   },
   methods: {
   }

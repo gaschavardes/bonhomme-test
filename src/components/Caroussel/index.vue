@@ -21,7 +21,6 @@
 	</div>
 </template>
 <script>
-import store from '@/assets/js/store'
 import gsap from 'gsap'
 import { Draggable } from 'gsap/Draggable'
 import InertiaPlugin from '@/assets/js/utils/gsap/InertiaPlugin'
@@ -134,7 +133,6 @@ export default {
 
 		this.fullSize = size + gap * this.$refs.item.length 
 
-		store.RAFCollection.add(this.onRaf, 1)
 		this.initScrollTrigger()
 		this.initDraggable()
 	},
@@ -157,7 +155,6 @@ export default {
 			edgeResistance: 0,
 			overshootTolerance: 0,
 			trigger: this.$refs.list,
-		//   bounds: { minX: this.snaps[this.snaps.length - 1], maxX: 0 },
 			inertia: true,
 			maxDuration: 3,
 			minDuration: 2,
@@ -187,9 +184,6 @@ export default {
 	mod (n, m) {
 		var remain = n % m;
 		return Math.floor(remain >= 0 ? remain : remain + m);
-	},
-	onRaf() {
-		// console.log( this.drag[0].x)
 	},
 	resize() {
 		this.itemSize = this.$refs.item[0].getBoundingClientRect()

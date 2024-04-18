@@ -16,10 +16,6 @@
 					<img :src="item.img" alt="">
 				</div>
 			</div>
-				
-			<!-- <div class="container" v-for="(item, key) in items" :key="key" ref="item" :style="`z-index: ${items.length - key}`">
-				
-			</div> -->
 		</div>
 	</div>
 </template>
@@ -45,7 +41,7 @@ export default {
 				title: 'Monster',
 				rate: '8.6/10',
 				summary: "When her young son Minato starts to behave strangely, his mother feels that there is something wrong. Discovering that a teacher is responsible, she storms into the school demanding to know what's going on. But as the story unfolds through the eyes of mother, teacher and child, the truth gradually emerges." ,
-				label:'our pick of the month',
+				label:' ☆ our pick of the month',
 				img: image1,
 				color: 'burgundy'
 			},
@@ -53,7 +49,7 @@ export default {
 				title: 'Anatomy of a fall',
 				rate: '8.2/10',
 				summary: "A woman is suspected of her husband's murder, and their blind son faces a moral dilemma as the sole witness.",
-				label:'our pick of the month',
+				label:' ☆ our pick of the month',
 				img: image2,
 				color: 'blue'
 			},
@@ -61,7 +57,7 @@ export default {
 				title: 'Past lives',
 				rate: '8.4/10',
 				summary: "Nora and Hae Sung, two childhood friends, are reunited in New York for one fateful week as they confront notions of destiny, love, and the choices that make a life",
-				label:'our pick of the month',
+				label:' ☆ our pick of the month',
 				img: image3,
 				color: 'brown'
 			},
@@ -84,7 +80,6 @@ export default {
 			start: "top bottom",
 			end: "top top",
 			onUpdate: () => {
-				// const val = -100 + this.mainScrollTrigger.progress * 100 + 'px'
 				this.contentAnim.progress(this.mainScrollTrigger.progress * 2 - 0.9)
 				this.imageAnim.progress(this.mainScrollTrigger.progress * 2 - 0.9)
 			}
