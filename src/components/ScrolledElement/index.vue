@@ -2,16 +2,18 @@
 <template>
 	<div class="scrolledElement" :style="`height: ${items.length * 100}vh`">
 		<div class="stickyEl">
-			<div class="container" v-for="(item, key) in items" :key="key" ref="item" :style="`z-index: ${items.length - key}`">
-				<div class="content">
+			<div class="backgrounds" v-for="(item, key) in items" :key="key" :class="item.color" ref="backgrounds"></div>
+			<div class="content container" v-for="(item, key) in items" :key="key" ref="content">
 					<h2 class="content-title">{{ item.title }}</h2> <span class="content-rate">{{ item.rate }}</span>
 					<p class="content-summary">{{ item.summary }}</p>
 					<p class="content-label">{{ item.label }}</p>
 				</div>
-				<div class="image" >
+				<div class="image" v-for="(item, key) in items" :key="key" ref="image" :style="`z-index: ${items.length - key}`">
 					<img :src="item.img" alt="">
 				</div>
-			</div>
+			<!-- <div class="container" v-for="(item, key) in items" :key="key" ref="item" :style="`z-index: ${items.length - key}`">
+				
+			</div> -->
 		</div>
 	</div>
 </template>
@@ -65,9 +67,9 @@ export default {
   },
   methods: {
 	initTimeline() {
-		this.$refs.item.forEach((element) => {
-			element.text = element.querySelector('.content')
-			element.image = element.querySelector('.image')
+		this.items.forEach((element, id) => {
+			element.text = this.$refs.content[id]
+			element.image = this.$refs.image[id]
 		})
 		this.timeline = gsap.timeline({
 			scrollTrigger: {
@@ -77,21 +79,33 @@ export default {
 				scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 			}
 		})
-		this.$refs.item.forEach((element, id) => {
-			gsap.set(element.text, { x: 0.9 * id * window.innerWidth + 'px' })
-			gsap.set(element.image, { y: 40 * id + 'px', x:  25 * id + 'px', rotation: 5 * (this.$refs.item.length - id - 1) })
+
+		this.items.forEach((element, id) => {
+			gsap.set(element.text, { x: 0.9 * id * window.innerWidth + 'px', opacity: 1 - id * 0.5})
+			gsap.set(element.image, { y: 50 * id + 'px', x:  40 * id + 'px', rotation: 5 * (this.items.length - id - 1), scale: 1 - id * 0.05 })
+		})
+		console.log("COUCOU")
+
+		this.$refs.backgrounds.forEach((el, i) => {
+			if(i !== 0) {
+				gsap.set(el, { scale: 0})
+			} else {
+				gsap.set(el, { scale: 2})
+			}
 		})
 
-		this.$refs.item.forEach((element, id) => {
-
-			this.timeline.addLabel(`block-${id}`, '+=0.5')
-			if(id > 0 && this.$refs.item[id + 1]) {
-				this.timeline.to(this.$refs.item[id + 1].text, { x: '90vw'}, `block-${id}-=1`)
+		this.items.forEach((element, id) => {
+			this.timeline.addLabel(`block-${id}`, '+=0.25')
+			if(id > 0 && this.items[id + 1]) {
+				this.timeline.to(this.items[id + 1].text, { x: '90vw', opacity: 0.5}, `block-${id}-=0.75`)
+				this.timeline.to(this.items[id + 1].image, { y: 50, x: 40, rotation: 5, scale: 1 - 0.05}, `block-${id}-=0.75`)
 			}
+			if(this.items[id + 1]) {
 			this.timeline.to(element.text, { x: '-50vw'}, `block-${id}`)
-			.to(element.image, { y: '-=50vw', rotation: '+=25'}, `block-${id}`)
-			if(this.$refs.item[id + 1]) {
-				this.timeline.to(this.$refs.item[id + 1].text, { x: '0vw'}, `block-${id}`)
+			.to(element.image, { y: '-=60vw', rotation: '+=25'}, `block-${id}`)
+				this.timeline.to(this.items[id + 1].text, { x: '0vw', opacity: 1}, `block-${id}`)
+				this.timeline.to(this.items[id + 1].image, { x: '0', y: 0, rotation: 10, scale: 1}, `block-${id}`)
+				this.timeline.to(this.$refs.backgrounds[id + 1], { scale: 2}, `block-${id}`)
 			}
 		})
 	}
