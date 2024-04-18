@@ -28,4 +28,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body{
+	overscroll-behavior: none;
+
+}
 </style>

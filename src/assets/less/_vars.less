@@ -6,7 +6,7 @@
 @burgundy: #4E1B1B;
 @brown: #59413C;
 
-@font-h1: 80px;
+@font-h1: 70px;
 @font-h2: 50px;
 @font-title-mobile: 40px;
 @font-subtitle: 20px;
@@ -34,7 +34,14 @@ h2{
 	padding: 7px 20px;
 	letter-spacing: 1.5px;
 	border-radius: 100px;
-	border: none;
+	border: @white solid 2px;
+	transition: all 0.2s;
+	cursor: pointer;
+	&:hover{
+		background-color: transparent;
+		color: @white;
+		
+	}
 }
 
 .container{

@@ -71,17 +71,25 @@
 			}
 		}
 
-		.image{
-			transform: rotate(5deg);
-			// position: absolute;
-			z-index: 1000;
-			position: absolute;
+		.imageContainer{
 			top: 50%;
-			transform: translate(0, -50%);
-			right: 20vw;
-			img{
-				max-height: 70vh;
+			transform: translateY(-50%);
+			height: 100vh;
+			position: relative;
+			transform-origin: 100% 100%;
+			.image{
+				transform: rotate(5deg);
+				// position: absolute;
+				z-index: 1000;
+				position: absolute;
+				top: 50%;
+				transform: translate(0, -50%);
+				right: 20vw;
+				img{
+					max-height: 70vh;
+				}
 			}
 		}
+	
 	}
 }
