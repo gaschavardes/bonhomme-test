@@ -117,14 +117,17 @@ export default {
 			this.carousselSetup()
 		})
 	}
-	
+
+	this.resize = window.addEventListener('resize', this.resize)
+  },
+  onBeforeUnmount: () => {
+	window.removeEventListener(this.resize)
   },
   methods: {
 	carousselSetup() {
 		let size = 0
 		const gap = 20
 		this.$refs.item.forEach((element, i) => {
-			console.log(element)
 			element.transform = size +  gap * i
 			size += this.itemSize.width
 		});
@@ -187,6 +190,12 @@ export default {
 	},
 	onRaf() {
 		// console.log( this.drag[0].x)
+	},
+	resize() {
+		this.itemSize = this.$refs.item[0].getBoundingClientRect()
+			this.$refs.list.style.height = this.itemSize.height + 'px'
+			this.carousselSetup()
+		this.carousselSetup()
 	}
   }
 }

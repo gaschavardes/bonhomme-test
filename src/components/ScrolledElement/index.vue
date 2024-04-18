@@ -109,7 +109,6 @@ export default {
 			gsap.set(element.text, { x: 90 * id + '%', opacity: 1 - id * 0.5})
 			gsap.set(element.image, { y: 50 * id + 'px', x:  40 * id + 'px', rotation: 2 * (this.items.length - id - 1), scale: 1 - id * 0.05 })
 		})
-		console.log("COUCOU")
 
 		this.$refs.backgrounds.forEach((el, i) => {
 			if(i !== 0) {
