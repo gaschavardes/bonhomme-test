@@ -187,8 +187,7 @@ export default {
 	},
 	resize() {
 		this.itemSize = this.$refs.item[0].getBoundingClientRect()
-			this.$refs.list.style.height = this.itemSize.height + 'px'
-			this.carousselSetup()
+		this.$refs.list.style.height = this.itemSize.height + 'px'
 		this.carousselSetup()
 	}
   }
