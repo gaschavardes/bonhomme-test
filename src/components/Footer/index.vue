@@ -1,23 +1,24 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-	<div class="landing-component">
+	<div class="footer-component">
 		<figure ref="figure">
 			<img :src="image" alt="">
 		</figure>
-		<div class="content">
+		<div class="content" ref="content">
 			<p class="subtitle">{{ subtitle }}</p>
-			<h1 v-html="title"></h1>
+			<h2 v-html="title"></h2>
+			<button class="cta">{{ button }}</button>
 		</div>
 	</div>
 </template>
 <script>
-	import MainImage from '@/assets/images/hero.jpg'
+	import MainImage from '@/assets/images/push.jpg'
 	import gsap from 'gsap'
 	import ScrollTrigger from 'gsap/ScrollTrigger'
 
 	gsap.registerPlugin(ScrollTrigger)
 	export default {
-		name: 'Basic-comp',
+		name: 'footer-comp',
 		components: {
 		},
 		props: {
@@ -25,8 +26,9 @@
 		},
 		data () {
 			return {
-				title: "Spider-man : across </br> the spider-verse",
-				subtitle: "New Arrival",
+				title: "Le cinema de </br> Denis Villeneuve",
+				subtitle: "Collection",
+				button: "Découvrir",
 				image: MainImage
 			}
 		},
@@ -37,14 +39,15 @@
 		},
 		methods: {
 			initScrollTrigger() {
-				console.log(this.$el)
+				this.contentAnim = gsap.from(this.$refs.content, { opacity: 0., y: 100, paused: true})
 				this.scrollTrigger = ScrollTrigger.create({
 					trigger: this.$el, 
-					start: "top top",
-					end: "bottom top",
+					start: "top bottom",
+					end: "top top",
 					onUpdate: () => {
-						const val = this.scrollTrigger.progress * 100 + 'px'
+						const val = -100 + this.scrollTrigger.progress * 100 + 'px'
 						this.$refs.figure.style.transform = `translate3D(0, ${val}, 0)`
+						this.contentAnim.progress(this.scrollTrigger.progress * 2 - 1)
 					}
 				})
 			}

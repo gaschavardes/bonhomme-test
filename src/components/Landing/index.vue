@@ -37,7 +37,6 @@
 		},
 		methods: {
 			initScrollTrigger() {
-				console.log(this.$el)
 				this.scrollTrigger = ScrollTrigger.create({
 					trigger: this.$el, 
 					start: "top top",
