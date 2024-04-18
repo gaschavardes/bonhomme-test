@@ -125,8 +125,8 @@ export default {
 				this.timeline.to(this.items[id + 1].image, { y: 50, x: 40, rotation: 2, scale: 1 - 0.05}, `block-${id}-=0.75`)
 			}
 			if(this.items[id + 1]) {
-			this.timeline.to(element.text, { x: '-50vw'}, `block-${id}`)
-			.to(element.image, { y: '-=60vw', rotation: '+=25'}, `block-${id}`)
+				this.timeline.to(element.text, { x: '-50vw'}, `block-${id}`)
+				.to(element.image, { y: '-=100vh', rotation: '+=25'}, `block-${id}`)
 				this.timeline.to(this.items[id + 1].text, { x: '0%', opacity: 1}, `block-${id}`)
 				this.timeline.to(this.items[id + 1].image, { x: '0', y: 0, rotation: 4, scale: 1}, `block-${id}`)
 				this.timeline.to(this.$refs.backgrounds[id + 1], { scale: 2}, `block-${id}`)
